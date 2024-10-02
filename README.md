@@ -1,2 +1,2 @@
 # From Google Slides to PDF
- This repo i write a module to convert a google slide that isn't editable to a pdf
+This tool was created to convert Google Slides to PDF with OCR, when it is not possible to edit, copy and download such presentations. Obviously it should only be used on material for which you have intellectual property rights. In my case I had lost the credentials of that account.
