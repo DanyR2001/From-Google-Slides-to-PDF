@@ -7,7 +7,23 @@ import numpy as np
 import pyautogui
 from PIL import ImageGrab
 import ocrmypdf
+import platform
 
+
+#check if the varivable timeSleep is enught for your system
+if platform.platform(aliased=True)=="win32" or platform.platform(aliased=True)=="cygwin" or platform.platform(aliased=True)=="msys":
+    OS="Win"
+    timeSleep = 10
+elif platform.platform(aliased=True)=="darwin":
+    OS="macOS"
+    timeSleep = 5
+else:
+    OS="Linux" #non supportato
+    OS="macOS"
+    timeSleep = 7
+
+
+print("OS: "+OS+ ", STOP PROGRAM IF IS WRONG")
 
 print ("inserisci il nome della presentazione")
 nome = input()
@@ -16,7 +32,7 @@ print ("inserisci l'url delle slide su google presentazione")
 url = input()
 
 
-OS="macOS"
+#change the screen size
 altezzaSchermo=1800
 larghezzaSchermo=2880
 #formato slide 4:3
@@ -24,7 +40,7 @@ larghezzaSlide=(altezzaSchermo/3)*4
 BandeSize=(larghezzaSchermo-larghezzaSlide)/2
 largghezzaMM=larghezzaSlide*0.2645833333
 altezzaMM=altezzaSchermo*0.2645833333
-timeSleep=5
+
 webbrowser.open(url, new=0, autoraise=True)
 time.sleep(timeSleep)
 
@@ -33,9 +49,9 @@ if OS == "macOS":
     time.sleep(timeSleep)
     pyautogui.press('home')
 elif OS == "Win":
-    pyautogui.hotkey('Ctrl', 'f5')
+    pyautogui.hotkey('ctrl', 'f5')
     time.sleep(timeSleep)
-    pyautogui.hotkey('ctrl','f5')
+    #pyautogui.hotkey('ctrl','f5')
     pyautogui.press('home')
 
 if not os.path.exists("temp") or not os.path.isdir("temp"):
